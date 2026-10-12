@@ -141,6 +141,7 @@
       return;
     }
     supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+    window.recoverySupabaseClient = supabase;
     const { data: { session } } = await supabase.auth.getSession();
     await setSignedInUI(session ? session.user : null);
     supabase.auth.onAuthStateChange((_event, sessionNow) => {
@@ -212,20 +213,15 @@
     cycle = data; byId("actual-revenue").value = cycle.actual_revenue_usd; byId("revenue-notes").value = cycle.notes || ""; draw(); say("Next cycle started with the previous cycle's unmet target carried forward.");
   });
   const attach = () => {
-    const originalCreateClient = window.supabase && window.supabase.createClient;
-    if (!originalCreateClient || window.__recoveryRevenueClientWrapped) return;
-    window.__recoveryRevenueClientWrapped = true;
-    window.supabase.createClient = function(...args) {
-      const c = originalCreateClient.apply(this,args);
-      client = c;
-      c.auth.getSession().then(({data}) => { user = data.session ? data.session.user : null; load().catch(e=>say(e.message)); });
-      c.auth.onAuthStateChange((_event,session) => { user = session ? session.user : null; load().catch(e=>say(e.message)); });
-      return c;
-    };
+    client = window.recoverySupabaseClient || null;
+    if (!client || window.__recoveryRevenueTrackerAttached) return;
+    window.__recoveryRevenueTrackerAttached = true;
+    client.auth.getSession().then(({data}) => { user = data.session ? data.session.user : null; load().catch(e=>say(e.message)); });
+    client.auth.onAuthStateChange((_event,session) => { user = session ? session.user : null; load().catch(e=>say(e.message)); });
   };
   const waitForSDK = () => {
-    if (window.supabase && window.supabase.createClient) attach();
+    if (window.recoverySupabaseClient) attach();
     else setTimeout(waitForSDK,100);
   };
-  waitForSDK();
+
 })();
