@@ -1,52 +1,47 @@
 # AI Revenue Recovery OS
 
-A static frontend prototype for a future SaaS product that helps teams organize missed-lead follow-ups and overdue-invoice workflows.
+A GitHub-hosted frontend for a future revenue recovery SaaS. The current interface intentionally contains no fabricated customers, invoices, activity, or success metrics.
 
-## Product north star
+## Business goal
 
-The dashboard displays a **$100,000,000 USD / 30-day ambition**. This is a goal, not a forecast, guarantee, verified result, or evidence of market demand. Verified revenue remains **$0.00** until a trusted revenue source is connected and reconciled.
+The long-term ambition is **$100,000,000 USD per 30 days**. This is an aspirational target, not a forecast or guarantee. Verified revenue is currently **$0.00** because no billing or revenue source is connected.
 
-## Current verified scope
+## Current state
 
-- Static HTML, CSS, and JavaScript frontend
-- Responsive dashboard and local demo interactions
-- USD-denominated illustrative sample values
-- No backend, database, authentication, AI model, customer messaging, payment processing, or production automation
-- Demo changes exist only in the current browser session and are not persisted
+- Static frontend in GitHub
+- GitHub Actions workflow for validation and GitHub Pages deployment
+- Empty lead and invoice states instead of fabricated demo records
+- No backend or database
+- No login or tenant isolation
+- No live AI provider
+- No email, SMS, CRM, billing, or payment integrations
+- No business automation currently running
 
-## Repository structure
+## GitHub Pages setup
 
-- `index.html` — accessible dashboard structure
-- `style.css` — responsive dark interface
-- `app.js` — demo-only interactions
-- `.github/workflows/pages.yml` — GitHub Pages deployment workflow
-- `SECURITY.md` — security reporting guidance
-- `CONTRIBUTING.md` — contribution checklist
+1. Open **Settings → Pages**.
+2. Under **Build and deployment → Source**, select **GitHub Actions**.
+3. Open **Actions** and verify the latest **Deploy static site to GitHub Pages** run succeeds.
+4. Use the Pages URL shown in Settings → Pages.
 
-## GitHub Pages
+The workflow validates required files and JavaScript syntax, then deploys the static site on pushes to `main`. This does not create a backend or keep a business process running 24/7.
 
-1. Open **Settings → Pages** in this repository.
-2. Under **Build and deployment**, choose **GitHub Actions** as the source.
-3. Pushes to `main` will trigger the Pages workflow.
-4. Confirm the workflow succeeds under **Actions** and open the Pages URL shown in repository settings.
+## Next required production work
 
-If Pages is currently configured as **Deploy from a branch**, switch it to **GitHub Actions** for the workflow in this repository to control deployment.
+1. Select a backend/database and create the project in the owner's account.
+2. Configure server-side secrets; never put private API keys in frontend files.
+3. Implement authentication, workspace isolation, authorization and database policies.
+4. Implement lead/invoice CRUD with validation, audit logging and data retention.
+5. Integrate an AI provider and authorized CRM/email/SMS/billing systems.
+6. Add customer consent, human approval where appropriate, idempotency, rate limits and retries.
+7. Add background jobs, monitoring, backups, alerting and operational runbooks.
+8. Add automated tests and security review.
+9. Validate demand and payment willingness with real businesses before scaling.
 
-## Local preview
+## Security
 
-Open `index.html` in a browser with `style.css` and `app.js` in the same folder.
+Never commit credentials, access tokens, private keys, customer personal information or real invoices. GitHub Pages is a public static host; it must not serve secrets or private customer data. Never send messages or process payments without appropriate authorization and safeguards.
 
-## Roadmap — not yet implemented
+## Honest automation boundary
 
-1. Validate the problem and willingness to pay with real businesses.
-2. Choose and configure a secure backend and database.
-3. Add authentication, organization/tenant isolation, and role-based access.
-4. Add server-side validation, row-level access rules, and audit trails.
-5. Integrate approved CRM, email/SMS, and billing providers with explicit customer consent.
-6. Add idempotent jobs, retry policies, rate limits, monitoring, backups, and incident handling.
-7. Add automated tests, privacy/data-retention controls, and production deployment checks.
-8. Add a verified revenue ledger and billing integration before reporting actual revenue.
-
-## Safety
-
-Do not commit passwords, API keys, access tokens, customer personal data, or real invoice records. Never treat a demo button as having contacted a customer or collected money. No secrets or production credentials are required for this static prototype.
+GitHub Actions runs jobs when triggered; it is not a continuously running server. Scheduled workflows can be delayed and should not be treated as a real-time job queue or an uptime guarantee. Production 24/7 business operations need an appropriate backend/worker and monitoring.
