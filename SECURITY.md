@@ -23,3 +23,8 @@ Do not publish secrets, personal data, or exploit details in a public issue. Con
 ## Deployment security
 
 GitHub Pages serves a static site. Meta CSP is not equivalent to an HTTP response header, and `frame-ancestors` cannot be enforced from a meta CSP. Production deployment should use a host/CDN that supports appropriate response headers, monitoring, backups, retention controls, and incident response.
+
+
+## Revenue cycle integrity
+
+Revenue-cycle creation is restricted to authenticated RPC functions. Per-user advisory transaction locks prevent simultaneous cycle initialization/rollover races. Client inserts/deletes are disabled for `revenue_cycles`, and a trigger protects system-calculated cycle dates and target fields. User-entered actual revenue is still self-reported, not payment-verified. Keep the leaked-password protection warning in the Supabase Auth dashboard on the launch checklist until enabled and verified.
