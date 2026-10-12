@@ -24,3 +24,21 @@
 .cloud-status.is-connected{background:#e4f4e8;color:#17683b}
 [hidden]{display:none!important}
 @media(max-width:560px){.cloud-auth-head{display:block}.cloud-status{margin-top:.6rem}}
+
+
+/* 30-day revenue target and carry-forward tracker */
+.revenue-tracker{margin:42px 0;padding:24px;background:var(--white);border:1px solid var(--line);border-radius:18px}
+.revenue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.revenue-card{display:flex;flex-direction:column;gap:8px;padding:18px;border-radius:13px;background:#f5f4ef;border:1px solid var(--line);min-width:0}
+.revenue-label{font-size:11px;color:var(--muted)}
+.revenue-card strong{font:800 clamp(18px,2.6vw,29px)/1.2 Manrope,sans-serif;letter-spacing:-.8px;overflow-wrap:anywhere}
+.revenue-card small{font-size:10px;color:var(--muted);line-height:1.5}
+.revenue-panel{margin-top:14px;padding:20px;border:1px solid var(--line);border-radius:13px;background:#fffefa}
+.revenue-panel h3{font:800 18px Manrope,sans-serif;margin:0}
+.revenue-panel>p{font-size:12px;line-height:1.7;color:var(--muted);max-width:750px}
+.revenue-panel label{display:block;font-size:12px;font-weight:700;margin:12px 0 6px}
+.revenue-panel input{display:block;width:100%;max-width:540px;min-height:43px;border:1px solid #dcdbe4;border-radius:9px;padding:10px 12px;font:inherit;font-size:13px}
+.revenue-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.revenue-actions button{cursor:pointer}
+.revenue-actions button:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:680px){.revenue-tracker{padding:17px}.revenue-grid{grid-template-columns:1fr}.revenue-card{padding:15px}.revenue-card strong{font-size:25px}.revenue-panel{padding:16px}}
