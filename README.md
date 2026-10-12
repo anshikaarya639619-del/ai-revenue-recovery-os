@@ -49,7 +49,15 @@ A truth-first revenue recovery workspace prototype hosted on GitHub Pages.
 
 ## Local preview
 
-Open `index.html` in a browser. Styling is in `style.css`; JavaScript is in `app.js`. Google Fonts and the Supabase JavaScript CDN are external dependencies.
+Open `index.html` in a browser. Styling is in `style.css`; core JavaScript is in `app.js`; lead search, status filters, sorting, KPI counts, and lead editing are in `features.js`. Google Fonts and the Supabase JavaScript CDN are external dependencies.
+
+## Lead operations added
+
+The signed-in lead workspace includes search across name/contact/source/notes, status filtering, follow-up-date sorting, due/overdue indicators, account-scoped KPI counts, and an edit form for lead details. These are browser-driven features; they are not a background notification service.
+
+## Revenue-cycle hardening
+
+The database creates the first cycle through `ensure_current_revenue_cycle()` and starts subsequent cycles through `start_next_revenue_cycle()`. Both use a per-user transaction lock. Client-side insert/delete policies for revenue cycles have been removed; a database trigger prevents changing cycle ownership, dates, base target, carry-forward amount, or generated target. Actual revenue remains a user-entered value and is not independently verified by a payment provider. Migration source: `supabase/migrations/20261012_harden_revenue_cycle_controls.sql`.
 
 ## Deployment
 
