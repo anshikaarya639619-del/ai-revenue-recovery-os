@@ -1,47 +1,28 @@
 # AI Revenue Recovery OS
 
-A GitHub-hosted frontend for a future revenue recovery SaaS. The current interface intentionally contains no fabricated customers, invoices, activity, or success metrics.
-
-## Business goal
-
-The long-term ambition is **$100,000,000 USD per 30 days**. This is an aspirational target, not a forecast or guarantee. Verified revenue is currently **$0.00** because no billing or revenue source is connected.
+A truth-first revenue recovery workspace prototype, hosted with GitHub Pages.
 
 ## Current state
 
-- Static frontend in GitHub
-- GitHub Actions workflow for validation and GitHub Pages deployment
-- Empty lead and invoice states instead of fabricated demo records
-- No backend or database
-- No login or tenant isolation
-- No live AI provider
-- No email, SMS, CRM, billing, or payment integrations
-- No business automation currently running
+- Public static landing page is deployed with GitHub Pages.
+- The interface is a front-end prototype only.
+- No CRM, lead form, invoice provider, database, email/SMS provider, payment gateway, analytics, or scheduled automation is connected.
+- Verified revenue and active automations must remain at zero until real integrations and evidence exist.
 
-## GitHub Pages setup
+## Local preview
 
-1. Open **Settings → Pages**.
-2. Under **Build and deployment → Source**, select **GitHub Actions**.
-3. Open **Actions** and verify the latest **Deploy static site to GitHub Pages** run succeeds.
-4. Use the Pages URL shown in Settings → Pages.
+Open `index.html` in a browser. The design uses `style.css`; Google Fonts are an optional external dependency with system-font fallbacks.
 
-The workflow validates required files and JavaScript syntax, then deploys the static site on pushes to `main`. This does not create a backend or keep a business process running 24/7.
+## Before real launch
 
-## Next required production work
+1. Choose one narrow customer segment and one recovery workflow.
+2. Define a lawful data source and confirm permission/consent to process customer data.
+3. Add a backend/database with access controls and secret management. Never put API keys in client-side HTML/JavaScript.
+4. Build a test-only integration and validate deduplication, opt-outs, message limits, retries, audit logs and error handling.
+5. Add human approval before sending payment reminders or other customer-facing messages.
+6. Configure analytics only after privacy notice/consent requirements are addressed.
+7. Test mobile layout, keyboard accessibility, page metadata and all links before launch.
 
-1. Select a backend/database and create the project in the owner's account.
-2. Configure server-side secrets; never put private API keys in frontend files.
-3. Implement authentication, workspace isolation, authorization and database policies.
-4. Implement lead/invoice CRUD with validation, audit logging and data retention.
-5. Integrate an AI provider and authorized CRM/email/SMS/billing systems.
-6. Add customer consent, human approval where appropriate, idempotency, rate limits and retries.
-7. Add background jobs, monitoring, backups, alerting and operational runbooks.
-8. Add automated tests and security review.
-9. Validate demand and payment willingness with real businesses before scaling.
+## Deployment
 
-## Security
-
-Never commit credentials, access tokens, private keys, customer personal information or real invoices. GitHub Pages is a public static host; it must not serve secrets or private customer data. Never send messages or process payments without appropriate authorization and safeguards.
-
-## Honest automation boundary
-
-GitHub Actions runs jobs when triggered; it is not a continuously running server. Scheduled workflows can be delayed and should not be treated as a real-time job queue or an uptime guarantee. Production 24/7 business operations need an appropriate backend/worker and monitoring.
+GitHub Pages publishes the static site from this repository. A successful Pages deployment does not mean business workflows or 24/7 automations are running.
