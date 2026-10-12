@@ -1,18 +1,18 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Revenue recovery workspace for business teams.">
-  <title>Revenue Recovery OS</title>
+  <meta name="description" content="A prototype workspace for organizing missed-lead follow-ups and overdue invoices.">
+  <meta name="theme-color" content="#080b12">
+  <title>AI Revenue Recovery OS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <aside class="sidebar">
     <h2>◈ Recovery OS</h2>
     <p class="muted">REVENUE INTELLIGENCE</p>
-    <nav>
+    <nav aria-label="Main navigation">
       <a class="active" href="#overview">Overview</a>
       <a href="#leads">Lead Recovery</a>
       <a href="#invoices">Invoices</a>
@@ -20,7 +20,6 @@
     </nav>
     <p class="sidebar-note">DEMO MODE · NOT CONNECTED</p>
   </aside>
-
   <main>
     <header>
       <div>
@@ -30,75 +29,66 @@
       </div>
       <span class="demo-badge">● Demo data</span>
     </header>
-
-    <section class="metrics" id="overview">
+    <section class="metrics" id="overview" aria-label="Revenue overview">
       <article class="metric">
-        <p>Potential revenue</p>
-        <h2>₹1,24,000</h2>
-        <small>Illustrative demo value</small>
+        <p>30-day revenue target</p>
+        <h2>$100,000,000</h2>
+        <small>Ambitious business goal · USD, not a forecast</small>
       </article>
       <article class="metric">
-        <p>Leads to follow up</p>
-        <h2>28</h2>
-        <small>Sample records only</small>
+        <p>Daily target equivalent</p>
+        <h2>$3,333,333.33</h2>
+        <small>30-day target divided by 30 · not actual revenue</small>
       </article>
       <article class="metric">
-        <p>Overdue invoices</p>
-        <h2>12</h2>
-        <small>Sample records only</small>
+        <p>Verified revenue</p>
+        <h2>$0.00</h2>
+        <small>No billing or revenue source connected</small>
       </article>
     </section>
-
     <section class="panel" id="leads">
       <div class="panel-heading">
         <div>
           <h2>Lead recovery queue</h2>
-          <p class="muted">Example records — no real customers</p>
+          <p class="muted">Illustrative records only — no real customers</p>
         </div>
-        <button id="addLead">+ Add demo lead</button>
+        <button id="addLead" type="button">+ Add demo lead</button>
       </div>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr><th>Lead</th><th>Opportunity</th><th>Status</th><th>Action</th></tr>
-          </thead>
+          <thead><tr><th>Lead</th><th>Opportunity</th><th>Status</th><th>Action</th></tr></thead>
           <tbody id="leadRows">
             <tr>
-              <td>Sample customer A</td><td>₹12,000</td>
+              <td>Sample customer A</td><td>$120.00</td>
               <td><span class="status">Follow-up due</span></td>
-              <td><button class="secondary follow">Mark contacted</button></td>
+              <td><button class="secondary follow" type="button">Mark contacted</button></td>
             </tr>
             <tr>
-              <td>Sample customer B</td><td>₹8,500</td>
+              <td>Sample customer B</td><td>$85.00</td>
               <td><span class="status">New</span></td>
-              <td><button class="secondary follow">Mark contacted</button></td>
+              <td><button class="secondary follow" type="button">Mark contacted</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
-
     <section class="panel" id="invoices">
       <h2>Invoice recovery</h2>
-      <p class="muted">Invoice reminders are not connected or sent automatically.</p>
+      <p class="muted">Reminder previews are local demos. No reminders are sent.</p>
       <div class="invoice-row">
-        <div><strong>Sample invoice INV-001</strong><p class="muted">Illustrative amount: ₹5,000</p></div>
-        <button class="secondary" id="invoiceInfo">View reminder preview</button>
+        <div><strong>Sample invoice INV-001</strong><p class="muted">Illustrative amount: $50.00</p></div>
+        <button class="secondary" id="invoiceInfo" type="button" aria-expanded="false">View reminder preview</button>
       </div>
       <p id="invoicePreview" class="notice" hidden>
-        Demo reminder: Hello, this is a sample payment reminder.
-        Please verify your invoice details before contacting a customer.
+        Demo reminder: Hello, this is a sample payment reminder. Please verify invoice details before contacting a customer.
       </p>
     </section>
-
     <section class="panel" id="activity">
       <h2>Activity</h2>
-      <p id="activityLog" class="muted">Demo workspace ready. No external actions have been taken.</p>
+      <p id="activityLog" class="muted" aria-live="polite">Demo workspace ready. No external actions have been taken.</p>
     </section>
-
-    <footer>Revenue Recovery OS · Prototype · No backend or live integrations</footer>
+    <footer>AI Revenue Recovery OS · Prototype · Demo data only · No backend or live integrations</footer>
   </main>
   <script src="app.js"></script>
 </body>
-  </html>
-  
+</html>
