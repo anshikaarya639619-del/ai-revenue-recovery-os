@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://anshikaarya639619-del.github.io/ai-revenue-recovery-os/sitemap.xml
