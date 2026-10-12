@@ -1,0 +1,104 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Revenue recovery workspace for business teams.">
+  <title>Revenue Recovery OS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>◈ Recovery OS</h2>
+    <p class="muted">REVENUE INTELLIGENCE</p>
+    <nav>
+      <a class="active" href="#overview">Overview</a>
+      <a href="#leads">Lead Recovery</a>
+      <a href="#invoices">Invoices</a>
+      <a href="#activity">Activity</a>
+    </nav>
+    <p class="sidebar-note">DEMO MODE · NOT CONNECTED</p>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <p class="muted">WORKSPACE / OVERVIEW</p>
+        <h1>Revenue Recovery</h1>
+        <p class="muted">Find opportunities. Follow up. Measure results.</p>
+      </div>
+      <span class="demo-badge">● Demo data</span>
+    </header>
+
+    <section class="metrics" id="overview">
+      <article class="metric">
+        <p>Potential revenue</p>
+        <h2>₹1,24,000</h2>
+        <small>Illustrative demo value</small>
+      </article>
+      <article class="metric">
+        <p>Leads to follow up</p>
+        <h2>28</h2>
+        <small>Sample records only</small>
+      </article>
+      <article class="metric">
+        <p>Overdue invoices</p>
+        <h2>12</h2>
+        <small>Sample records only</small>
+      </article>
+    </section>
+
+    <section class="panel" id="leads">
+      <div class="panel-heading">
+        <div>
+          <h2>Lead recovery queue</h2>
+          <p class="muted">Example records — no real customers</p>
+        </div>
+        <button id="addLead">+ Add demo lead</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Lead</th><th>Opportunity</th><th>Status</th><th>Action</th></tr>
+          </thead>
+          <tbody id="leadRows">
+            <tr>
+              <td>Sample customer A</td><td>₹12,000</td>
+              <td><span class="status">Follow-up due</span></td>
+              <td><button class="secondary follow">Mark contacted</button></td>
+            </tr>
+            <tr>
+              <td>Sample customer B</td><td>₹8,500</td>
+              <td><span class="status">New</span></td>
+              <td><button class="secondary follow">Mark contacted</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" id="invoices">
+      <h2>Invoice recovery</h2>
+      <p class="muted">Invoice reminders are not connected or sent automatically.</p>
+      <div class="invoice-row">
+        <div><strong>Sample invoice INV-001</strong><p class="muted">Illustrative amount: ₹5,000</p></div>
+        <button class="secondary" id="invoiceInfo">View reminder preview</button>
+      </div>
+      <p id="invoicePreview" class="notice" hidden>
+        Demo reminder: Hello, this is a sample payment reminder.
+        Please verify your invoice details before contacting a customer.
+      </p>
+    </section>
+
+    <section class="panel" id="activity">
+      <h2>Activity</h2>
+      <p id="activityLog" class="muted">Demo workspace ready. No external actions have been taken.</p>
+    </section>
+
+    <footer>Revenue Recovery OS · Prototype · No backend or live integrations</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+  </html>
+  
