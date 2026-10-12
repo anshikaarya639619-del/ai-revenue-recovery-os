@@ -11,7 +11,7 @@
   const safeLoad = () => {
     try {
       const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-      return Array.isArray(value) ? value.filter(x => x && typeof x.id === "string") : [];
+      return Array.isArray(value) ? value.filter(x => x && typeof x.id === "string" && typeof x.name === "string").slice(0, 500) : [];
     } catch { return []; }
   };
   let leads = safeLoad();
@@ -36,9 +36,10 @@
   form.addEventListener("submit", event => {
     event.preventDefault();
     const data = new FormData(form);
-    const name = String(data.get("name") || "").trim();
+    const name = String(data.get("name") || "").trim().slice(0, 100);
     if (!name) { message.textContent = "Enter a name before saving."; return; }
-    leads.push({id: (Date.now().toString(36) + Math.random().toString(36).slice(2,8)), name, contact:String(data.get("contact")||"").trim(), source:String(data.get("source")||"Website"), status:String(data.get("status")||"New"), next:String(data.get("next")||""), createdAt:new Date().toISOString()});
+    if (leads.length >= 500) { message.textContent = "This local prototype is limited to 500 records. Export data before removing old test records."; return; }
+    leads.push({id: (Date.now().toString(36) + Math.random().toString(36).slice(2,8)), name, contact:String(data.get("contact")||"").trim().slice(0, 120), source:["Website","WhatsApp","Instagram","Referral","Phone call","Other"].includes(String(data.get("source"))) ? String(data.get("source")) : "Other", status:["New","Follow-up due","Contacted","Converted","Closed"].includes(String(data.get("status"))) ? String(data.get("status")) : "New", next:/^\d{4}-\d{2}-\d{2}$/.test(String(data.get("next")||"")) ? String(data.get("next")) : "", createdAt:new Date().toISOString()});
     if (!save()) { leads.pop(); return; }
     form.reset(); message.textContent = "Saved on this device. No message was sent."; render();
   });
