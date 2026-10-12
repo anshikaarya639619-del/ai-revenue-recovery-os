@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <div class="page-shell" id="overview">
@@ -39,15 +39,39 @@
 <article class="feature-card"><div class="feature-head"><div><p class="overline">01 / LEAD RECOVERY</p><h2>Turn missed leads<br>into next steps.</h2></div><span class="feature-symbol">↗</span></div><p class="feature-description">The future workflow will capture enquiries, track follow-ups and surface leads that need attention.</p><div class="empty-state"><div class="empty-icon">⌕</div><div><strong>No live leads connected</strong><p>Connect a real lead source to begin tracking.</p></div></div><a class="inline-link" href="#setup">Set up lead recovery <span>→</span></a></article>
 <article class="feature-card feature-invoice"><div class="feature-head"><div><p class="overline">02 / INVOICE RECOVERY</p><h2>Know what’s<br>still outstanding.</h2></div><span class="feature-symbol">▤</span></div><p class="feature-description">A future workflow for overdue invoices, payment reminders and a clear recovery queue.</p><div class="empty-state"><div class="empty-icon">₹</div><div><strong>No billing source connected</strong><p>No invoices or payment data are being imported.</p></div></div><a class="inline-link" href="#setup">Set up invoice recovery <span>→</span></a></article>
 </section>
-<section class="setup-card" id="setup"><div class="setup-heading"><div><p class="overline">THE BUILD SEQUENCE</p><h2>From idea to working system.</h2><p>Complete the foundations before switching on automation.</p></div><div class="setup-badge"><span>0 / 4</span><small>FOUNDATIONS READY</small></div></div><div class="setup-progress"><span></span></div><div class="setup-steps">
-<div class="setup-step"><span class="step-number">01</span><div><strong>Choose the first customer workflow</strong><p>Decide which leads or unpaid invoices to recover first.</p></div><span class="step-state">NEXT UP</span></div>
+
+<section class="lead-workspace" id="lead-workspace">
+  <div class="section-title"><div><p class="overline">LOCAL MVP · PHASE 01</p><h2>Lead recovery desk<span>.</span></h2></div><p>Records stay in this browser only</p></div>
+  <div class="lead-layout">
+    <form class="lead-form" id="lead-form">
+      <h3>Add a lead</h3>
+      <p class="form-help">Do not enter sensitive payment details or private data. This prototype saves records only on this device/browser.</p>
+      <label for="lead-name">Customer / lead name</label><input id="lead-name" name="name" maxlength="100" required autocomplete="name" placeholder="e.g. Rahul Sharma">
+      <label for="lead-contact">Contact (optional)</label><input id="lead-contact" name="contact" maxlength="120" autocomplete="off" placeholder="Email or phone">
+      <label for="lead-source">Lead source</label><select id="lead-source" name="source"><option>Website</option><option>WhatsApp</option><option>Instagram</option><option>Referral</option><option>Phone call</option><option>Other</option></select>
+      <label for="lead-status">Status</label><select id="lead-status" name="status"><option>New</option><option>Follow-up due</option><option>Contacted</option><option>Converted</option><option>Closed</option></select>
+      <label for="lead-next">Next follow-up date (optional)</label><input id="lead-next" name="next" type="date">
+      <button class="primary-btn form-submit" type="submit">Save lead <span>＋</span></button>
+      <p id="lead-message" class="form-message" role="status" aria-live="polite"></p>
+    </form>
+    <div class="lead-records">
+      <div class="records-heading"><div><h3>Saved leads</h3><p id="lead-count">0 records on this device</p></div><button type="button" id="export-leads" class="secondary-btn">Export CSV ↗</button></div>
+      <div id="lead-list" class="lead-list"><div class="records-empty">No leads saved yet. Add a test lead to try the workflow.</div></div>
+      <p class="form-help">Local-only storage is not a secure shared database, cloud sync, or 24/7 automation. Export regularly and use test data until a secure backend is connected.</p>
+    </div>
+  </div>
+</section>
+
+<section class="setup-card" id="setup"><div class="setup-heading"><div><p class="overline">THE BUILD SEQUENCE</p><h2>From idea to working system.</h2><p>Complete the foundations before switching on automation.</p></div><div class="setup-badge"><span>1 / 4</span><small>FOUNDATIONS READY</small></div></div><div class="setup-progress"><span></span></div><div class="setup-steps">
+<div class="setup-step"><span class="step-number">01</span><div><strong>Choose the first customer workflow</strong><p>Decide which leads or unpaid invoices to recover first.</p></div><span class="step-state">IN PROGRESS</span></div>
 <div class="setup-step"><span class="step-number">02</span><div><strong>Connect a real data source</strong><p>CRM, form, spreadsheet or billing platform.</p></div><span class="step-state">PENDING</span></div>
 <div class="setup-step"><span class="step-number">03</span><div><strong>Configure safe follow-up rules</strong><p>Consent, message limits, opt-outs and approval checks.</p></div><span class="step-state">PENDING</span></div>
 <div class="setup-step"><span class="step-number">04</span><div><strong>Test, verify and activate</strong><p>Run a small test before enabling any live automation.</p></div><span class="step-state">PENDING</span></div>
 </div></section>
-<section class="bottom-note"><span class="note-mark">i</span><p><strong>Honest by design.</strong> This is currently a static front-end workspace. No customer records, payments, messages or background automations are connected or running.</p></section>
+<section class="bottom-note"><span class="note-mark">i</span><p><strong>Honest by design.</strong> This is a front-end prototype with local-only lead records. No shared database, payment connection, messages or background automations are connected or running.</p></section>
 </main>
 <footer><a class="footer-brand" href="#overview">recovery<span>OS</span></a><span>Build deliberately. Measure honestly.</span><a href="https://github.com/anshikaarya639619-del/ai-revenue-recovery-os">Open repository ↗</a></footer>
 </div>
+<script src="app.js?v=1" defer></script>
 </body>
 </html>
