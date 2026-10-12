@@ -1,0 +1,282 @@
+
+:root {
+  color-scheme: dark;
+  --bg: #080b12;
+  --panel: #111722;
+  --border: #252e3d;
+  --text: #f4f7fb;
+  --muted: #9ba8bb;
+  --accent: #8b9dff;
+  --green: #6de0b0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 245px;
+  padding: 26px 18px;
+  background: #0c111b;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar h2 {
+  font-size: 21px;
+  letter-spacing: -0.7px;
+}
+
+.muted,
+.metric p,
+.metric small {
+  color: var(--muted);
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.sidebar nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  color: white;
+  background: #1b2639;
+}
+
+.sidebar-note {
+  position: absolute;
+  bottom: 20px;
+  color: var(--green);
+  font-size: 11px;
+}
+
+main {
+  max-width: 1500px;
+  margin-left: 245px;
+  padding: 36px;
+}
+
+header,
+.panel-heading,
+.invoice-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+header {
+  margin-bottom: 28px;
+}
+
+h1 {
+  margin: 4px 0;
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -1.5px;
+}
+
+h2 {
+  letter-spacing: -0.5px;
+}
+
+header p,
+.metric p,
+.metric small,
+.invoice-row p {
+  margin: 5px 0;
+}
+
+.demo-badge,
+.status {
+  display: inline-block;
+  padding: 7px 10px;
+  border: 1px solid #344b48;
+  border-radius: 999px;
+  color: var(--green);
+  background: #10251f;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.metric,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.metric h2 {
+  margin: 12px 0;
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.panel {
+  margin-bottom: 20px;
+}
+
+.panel-heading {
+  margin-bottom: 18px;
+}
+
+.panel-heading h2,
+.panel > h2 {
+  margin-top: 0;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: #080b12;
+  background: var(--accent);
+  font: inherit;
+  font-weight: 650;
+}
+
+button:hover {
+  filter: brightness(1.12);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+button.secondary {
+  color: var(--text);
+  background: #1b2639;
+  border-color: #344054;
+  font-size: 13px;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 15px 10px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+th {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+td {
+  font-size: 14px;
+}
+
+.invoice-row {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.notice {
+  margin-top: 16px;
+  padding: 15px;
+  color: var(--green);
+  background: #10251f;
+  border-radius: 10px;
+}
+
+footer {
+  padding: 18px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 850px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    padding: 14px 18px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar h2 {
+    margin: 0;
+  }
+
+  .sidebar > .muted,
+  .sidebar-note {
+    display: none;
+  }
+
+  .sidebar nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 12px;
+  }
+
+  .sidebar nav a {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  main {
+    margin-left: 0;
+    padding: 20px 14px;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  header,
+  .panel-heading,
+  .invoice-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .metric,
+  .panel {
+    padding: 18px;
+  }
+}
