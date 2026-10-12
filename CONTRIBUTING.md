@@ -20,8 +20,8 @@ The frontend is static HTML/CSS/JavaScript on GitHub Pages. Supabase currently p
 
 1. Run JavaScript syntax and required-file checks.
 2. Test the page at mobile and desktop widths.
-3. Test account creation/sign-in, lead CRUD, export and sign-out.
+3. Test account creation/sign-in, lead CRUD including edit/search/filter/sort, export and sign-out.
 4. Test that two accounts cannot access each other's records.
-5. Test revenue-cycle initialization and carry-forward using a safe test environment.
+5. Test RPC-based revenue-cycle initialization, simultaneous rollover requests, protected target fields, and carry-forward using a safe test environment.
 6. Review Supabase security/performance advisors.
 7. Never enable customer-facing automation without consent, opt-out handling, retries, logs, rate limits, and a human approval path during initial rollout.
