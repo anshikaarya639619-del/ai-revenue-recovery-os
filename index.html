@@ -38,17 +38,17 @@
 <article class="stat-card"><div class="stat-top"><span class="stat-icon">⌁</span><span class="tag tag-neutral">CURRENT STATE</span></div><p class="stat-label">Active automations</p><h3>0<span class="unit"> running</span></h3><div class="stat-bottom"><span class="status-dot"></span><span>Connections not configured</span></div></article>
 </section>
 <section class="content-grid">
-<article class="feature-card"><div class="feature-head"><div><p class="overline">01 / LEAD RECOVERY</p><h2>Turn missed leads<br>into next steps.</h2></div><span class="feature-symbol">↗</span></div><p class="feature-description">The future workflow will capture enquiries, track follow-ups and surface leads that need attention.</p><div class="empty-state"><div class="empty-icon">⌕</div><div><strong>No live leads connected</strong><p>Connect a real lead source to begin tracking.</p></div></div><a class="inline-link" href="#lead-workspace">Open lead desk <span>→</span></a></article>
+<article class="feature-card"><div class="feature-head"><div><p class="overline">01 / LEAD RECOVERY</p><h2>Turn missed leads<br>into next steps.</h2></div><span class="feature-symbol">↗</span></div><p class="feature-description">The future workflow will capture enquiries, track follow-ups and surface leads that need attention.</p><div class="empty-state"><div class="empty-icon">⌕</div><div><strong>Lead source not connected</strong><p>You can add test leads manually in the lead desk below.</p></div></div><a class="inline-link" href="#lead-workspace">Open lead desk <span>→</span></a></article>
 <article class="feature-card feature-invoice"><div class="feature-head"><div><p class="overline">02 / INVOICE RECOVERY</p><h2>Know what’s<br>still outstanding.</h2></div><span class="feature-symbol">▤</span></div><p class="feature-description">A future workflow for overdue invoices, payment reminders and a clear recovery queue.</p><div class="empty-state"><div class="empty-icon">₹</div><div><strong>No billing source connected</strong><p>No invoices or payment data are being imported.</p></div></div><a class="inline-link" href="#setup">Set up invoice recovery <span>→</span></a></article>
 </section>
 
-<section class="security-note" aria-labelledby="security-title"><p class="overline">SECURITY STATUS</p><h2 id="security-title">Safer by default<span>.</span></h2><p>Basic browser security policy is enabled. Lead records are stored in this browser only and are not encrypted or synced. Use fictional test data until a secure, authenticated backend is added.</p><ul><li>No API keys or credentials are stored in this page.</li><li>Customer-facing messages are not sent.</li><li>Do not use this prototype for sensitive or regulated data.</li></ul></section>
+<section class="security-note" aria-labelledby="security-title"><p class="overline">SECURITY STATUS</p><h2 id="security-title">Safer by default<span>.</span></h2><p>Supabase cloud storage is configured. Lead access requires an authenticated account and is restricted by database row-level security. Use test data until account isolation and live workflows have been verified.</p><ul><li>Only a publishable Supabase key is used in the browser; never place a service-role key here.</li><li>Customer-facing messages are not sent.</li><li>Do not use this prototype for sensitive or regulated data.</li></ul></section>
 <section class="lead-workspace" id="lead-workspace">
-  <div class="section-title"><div><p class="overline">LOCAL MVP · PHASE 01</p><h2>Lead recovery desk<span>.</span></h2></div><p>Records stay in this browser only</p></div>
+  <div class="section-title"><div><p class="overline">CLOUD MVP · PHASE 01</p><h2>Lead recovery desk<span>.</span></h2></div><p>Records sync to your signed-in account</p></div>
   <div class="lead-layout">
     <form class="lead-form" id="lead-form">
       <h3>Add a lead</h3>
-      <p class="form-help">Do not enter sensitive payment details or private data. This prototype saves records only on this device/browser.</p>
+      <p class="form-help">Use only lead information you have permission to store. Sign in above to sync records to your account.</p>
       <label for="lead-name">Customer / lead name</label><input id="lead-name" name="name" maxlength="100" required autocomplete="name" placeholder="e.g. Rahul Sharma">
       <label for="lead-contact">Contact (optional)</label><input id="lead-contact" name="contact" maxlength="120" autocomplete="off" placeholder="Email or phone">
       <label for="lead-source">Lead source</label><select id="lead-source" name="source"><option>Website</option><option>WhatsApp</option><option>Instagram</option><option>Referral</option><option>Phone call</option><option>Other</option></select>
@@ -60,7 +60,7 @@
     <div class="lead-records">
       <div class="records-heading"><div><h3>Saved leads</h3><p id="lead-count">0 records on this device</p></div><button type="button" id="export-leads" class="secondary-btn">Export CSV ↗</button></div>
       <div id="lead-list" class="lead-list"><div class="records-empty">No leads saved yet. Add a test lead to try the workflow.</div></div>
-      <p class="form-help">Local-only storage is not a secure shared database, cloud sync, or 24/7 automation. Export regularly and use test data until a secure backend is connected.</p>
+      <p class="form-help">Cloud records are account-scoped. Export backups regularly; background reminders and 24/7 automations are not enabled yet.</p>
     </div>
   </div>
 </section>
@@ -71,7 +71,7 @@
 <div class="setup-step"><span class="step-number">03</span><div><strong>Configure safe follow-up rules</strong><p>Consent, message limits, opt-outs and approval checks.</p></div><span class="step-state">PENDING</span></div>
 <div class="setup-step"><span class="step-number">04</span><div><strong>Test, verify and activate</strong><p>Run a small test before enabling any live automation.</p></div><span class="step-state">PENDING</span></div>
 </div></section>
-<section class="bottom-note"><span class="note-mark">i</span><p><strong>Honest by design.</strong> This is a front-end prototype with local-only lead records. No shared database, payment connection, messages or background automations are connected or running.</p></section>
+<section class="bottom-note"><span class="note-mark">i</span><p><strong>Honest by design.</strong> Authenticated cloud lead storage is connected. Payment processing, customer messages and background automations are not connected or running.</p></section>
 </main>
 <footer><a class="footer-brand" href="#overview">recovery<span>OS</span></a><span>Build deliberately. Measure honestly.</span><a href="https://github.com/anshikaarya639619-del/ai-revenue-recovery-os">Open repository ↗</a></footer>
 </div>
