@@ -11,3 +11,16 @@
 @media(max-width:760px){.lead-layout{grid-template-columns:1fr}.records-heading{align-items:flex-start}.lead-workspace{margin:38px 0}.lead-form,.lead-records{padding:20px}}
 
 .security-note{margin:42px 0 12px;padding:24px 28px;background:#eef0ff;border:1px solid #d9dcff;border-radius:16px}.security-note h2{margin:0;font:800 clamp(22px,3vw,30px) Manrope,sans-serif;letter-spacing:-1px}.security-note h2 span{color:var(--blue)}.security-note p:not(.overline){max-width:760px;font-size:13px;color:#42465a}.security-note ul{display:flex;flex-wrap:wrap;gap:8px 26px;padding-left:18px;font-size:12px;color:#42465a}@media(max-width:760px){.security-note{padding:20px}.security-note ul{display:block}}
+
+
+/* Supabase cloud sign-in */
+.cloud-auth{margin:0 0 1.5rem;padding:1.25rem;border:1px solid var(--line,#deded7);border-radius:18px;background:var(--surface,#fff)}
+.cloud-auth-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.cloud-auth h3{margin:.2rem 0 .35rem}
+.cloud-auth-form{display:grid;grid-template-columns:1fr;gap:.5rem;max-width:520px;margin-top:1rem}
+.cloud-auth-form input{width:100%;box-sizing:border-box}
+.cloud-auth-actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.65rem}
+.cloud-status{display:inline-flex;align-items:center;white-space:nowrap;padding:.4rem .65rem;border-radius:999px;background:#f1eee7;color:#675c4b;font-size:.75rem;font-weight:700}
+.cloud-status.is-connected{background:#e4f4e8;color:#17683b}
+[hidden]{display:none!important}
+@media(max-width:560px){.cloud-auth-head{display:block}.cloud-status{margin-top:.6rem}}
