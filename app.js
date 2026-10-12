@@ -185,9 +185,7 @@
     if (error) { say("Could not load revenue cycle: "+error.message); return; }
     cycle = data && data[0] ? data[0] : null;
     if (!cycle) {
-      const now = new Date();
-      const end = new Date(now.getTime()+30*24*60*60*1000);
-      const {data:created,error:createError} = await client.from("revenue_cycles").insert({cycle_number:1,starts_at:now.toISOString(),ends_at:end.toISOString(),base_target_usd:100000000,carried_gap_usd:0}).select().single();
+      const {data:created,error:createError} = await client.rpc("ensure_current_revenue_cycle");
       if (createError) { say("Could not create first cycle: "+createError.message); draw(); return; }
       cycle = created;
     }
