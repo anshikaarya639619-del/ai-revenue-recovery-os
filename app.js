@@ -223,5 +223,6 @@
     if (window.recoverySupabaseClient) attach();
     else setTimeout(waitForSDK,100);
   };
+  waitForSDK();
 
 })();
