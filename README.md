@@ -15,7 +15,7 @@ Open `index.html` in a browser. The design uses `style.css`; Google Fonts are an
 
 ## Security posture (current prototype)
 
-- A restrictive Content Security Policy is set in a meta tag; Google Fonts are the only external stylesheet/font origins allowed.
+- A Content Security Policy is set in a meta tag; Google Fonts are the only external stylesheet/font origins allowed. `frame-ancestors` cannot be enforced from a meta CSP and must be configured as an HTTP response header at a supporting host/CDN.
 - Referrer policy is set to `strict-origin-when-cross-origin`.
 - Lead data is stored in browser `localStorage`, which is **not encrypted**, not access-controlled per user, and not shared/synced. Do not store real sensitive customer information here.
 - Rendering escapes user-entered text; values are length-limited and select fields are allow-listed.
