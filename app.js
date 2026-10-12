@@ -152,3 +152,80 @@
     setCloudMessage(authMessage, "Could not initialize cloud connection: " + error.message);
   });
 })();
+
+/* Revenue goal tracker: records actual revenue and carries unmet target into the next 30-day cycle. */
+(() => {
+  const workspace = document.getElementById("lead-workspace");
+  if (!workspace) return;
+  const section = document.createElement("section");
+  section.className = "revenue-tracker";
+  section.id = "revenue-tracker";
+  section.innerHTML = '<div class="section-title"><div><p class="overline">REVENUE CONTROL · PHASE 02</p><h2>30-day target tracker<span>.</span></h2></div><p>USD · actuals only</p></div><div class="revenue-grid"><article class="revenue-card"><span class="revenue-label">Current cycle target</span><strong id="cycle-target">$100,000,000</strong><small id="cycle-dates">Sign in to load your cycle</small></article><article class="revenue-card"><span class="revenue-label">Actual revenue recorded</span><strong id="cycle-actual">$0</strong><small>Enter collected revenue only</small></article><article class="revenue-card"><span class="revenue-label">Unmet target to carry forward</span><strong id="cycle-gap">$100,000,000</strong><small id="cycle-next">Next cycle target includes the remaining gap</small></article></div><div class="revenue-panel"><h3>Record verified revenue</h3><p>Enter cumulative revenue received during the current cycle in USD. This is a manual record, not a payment processor connection.</p><label for="actual-revenue">Actual revenue received (USD)</label><input id="actual-revenue" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"><label for="revenue-notes">Evidence / notes (optional)</label><input id="revenue-notes" type="text" maxlength="1000" placeholder="Invoice or payment reference; no sensitive details"><div class="revenue-actions"><button type="button" class="primary-btn" id="save-revenue">Save actual revenue</button><button type="button" class="secondary-btn" id="start-cycle" hidden>Start next 30-day cycle</button></div><p class="form-message" id="revenue-message" role="status" aria-live="polite"></p></div>';
+  workspace.parentNode.insertBefore(section, workspace.nextSibling);
+  const byId = id => document.getElementById(id);
+  const fmt = n => new Intl.NumberFormat("en-US", {style:"currency",currency:"USD",maximumFractionDigits:2}).format(Number(n || 0));
+  let client = null, user = null, cycle = null;
+  const say = text => { byId("revenue-message").textContent = text; };
+  const draw = () => {
+    byId("cycle-target").textContent = fmt(cycle ? cycle.target_usd : 100000000);
+    byId("cycle-actual").textContent = fmt(cycle ? cycle.actual_revenue_usd : 0);
+    const gap = cycle ? Math.max(Number(cycle.target_usd)-Number(cycle.actual_revenue_usd),0) : 100000000;
+    byId("cycle-gap").textContent = fmt(gap);
+    byId("cycle-dates").textContent = cycle ? new Date(cycle.starts_at).toLocaleDateString()+" – "+new Date(cycle.ends_at).toLocaleDateString() : "Sign in to load your cycle";
+    byId("cycle-next").textContent = cycle ? "Next cycle base $100M + gap "+fmt(gap) : "Next cycle carries any unmet target";
+    byId("start-cycle").hidden = !cycle || new Date(cycle.ends_at).getTime() > Date.now();
+    byId("save-revenue").disabled = !user || !cycle;
+    byId("actual-revenue").disabled = !user || !cycle;
+    byId("revenue-notes").disabled = !user || !cycle;
+  };
+  const load = async () => {
+    if (!client || !user) { cycle = null; draw(); return; }
+    const {data,error} = await client.from("revenue_cycles").select("id,cycle_number,starts_at,ends_at,base_target_usd,carried_gap_usd,target_usd,actual_revenue_usd,notes").order("cycle_number",{ascending:false}).limit(1);
+    if (error) { say("Could not load revenue cycle: "+error.message); return; }
+    cycle = data && data[0] ? data[0] : null;
+    if (!cycle) {
+      const now = new Date();
+      const end = new Date(now.getTime()+30*24*60*60*1000);
+      const {data:created,error:createError} = await client.from("revenue_cycles").insert({cycle_number:1,starts_at:now.toISOString(),ends_at:end.toISOString(),base_target_usd:100000000,carried_gap_usd:0}).select().single();
+      if (createError) { say("Could not create first cycle: "+createError.message); draw(); return; }
+      cycle = created;
+    }
+    byId("actual-revenue").value = cycle.actual_revenue_usd;
+    byId("revenue-notes").value = cycle.notes || "";
+    draw();
+  };
+  byId("save-revenue").addEventListener("click", async () => {
+    if (!client || !user || !cycle) { say("Sign in to use the revenue tracker."); return; }
+    const raw = byId("actual-revenue").value;
+    const amount = Number(raw);
+    if (raw.trim()==="" || !Number.isFinite(amount) || amount < 0) { say("Enter a valid non-negative USD amount."); return; }
+    if (new Date(cycle.ends_at).getTime() <= Date.now()) { say("This cycle ended. Start the next cycle before changing its revenue."); return; }
+    const {data,error} = await client.from("revenue_cycles").update({actual_revenue_usd:amount,notes:byId("revenue-notes").value.trim()}).eq("id",cycle.id).select().single();
+    if (error) { say("Revenue save failed: "+error.message); return; }
+    cycle = data; draw(); say("Revenue entry saved. Only use verified money received; this is not automatic bank/payment verification.");
+  });
+  byId("start-cycle").addEventListener("click", async () => {
+    if (!client || !user) { say("Sign in first."); return; }
+    if (!cycle || new Date(cycle.ends_at).getTime() > Date.now()) { say("The current 30-day cycle must end before starting another."); return; }
+    const {data,error} = await client.rpc("start_next_revenue_cycle");
+    if (error) { say("Could not start next cycle: "+error.message); return; }
+    cycle = data; byId("actual-revenue").value = cycle.actual_revenue_usd; byId("revenue-notes").value = cycle.notes || ""; draw(); say("Next cycle started with the previous cycle's unmet target carried forward.");
+  });
+  const attach = () => {
+    const originalCreateClient = window.supabase && window.supabase.createClient;
+    if (!originalCreateClient || window.__recoveryRevenueClientWrapped) return;
+    window.__recoveryRevenueClientWrapped = true;
+    window.supabase.createClient = function(...args) {
+      const c = originalCreateClient.apply(this,args);
+      client = c;
+      c.auth.getSession().then(({data}) => { user = data.session ? data.session.user : null; load().catch(e=>say(e.message)); });
+      c.auth.onAuthStateChange((_event,session) => { user = session ? session.user : null; load().catch(e=>say(e.message)); });
+      return c;
+    };
+  };
+  const waitForSDK = () => {
+    if (window.supabase && window.supabase.createClient) attach();
+    else setTimeout(waitForSDK,100);
+  };
+  waitForSDK();
+})();
