@@ -18,18 +18,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Check required files
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Validate required files and JavaScript syntax
         run: |
           test -f index.html
           test -f style.css
           test -f app.js
           grep -q 'name="viewport"' index.html
-          grep -q 'src="app.js"' index.html
           grep -q 'href="style.css"' index.html
+          grep -q 'id="setup"' index.html
+          node --check app.js
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .
 
