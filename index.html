@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A prototype workspace for organizing missed-lead follow-ups and overdue invoices.">
+  <meta name="description" content="Revenue recovery operations workspace. Live integrations are not configured yet.">
   <meta name="theme-color" content="#080b12">
   <title>AI Revenue Recovery OS</title>
   <link rel="stylesheet" href="style.css">
@@ -11,84 +11,82 @@
 <body>
   <aside class="sidebar">
     <h2>◈ Recovery OS</h2>
-    <p class="muted">REVENUE INTELLIGENCE</p>
+    <p class="muted">REVENUE OPERATIONS</p>
     <nav aria-label="Main navigation">
       <a class="active" href="#overview">Overview</a>
       <a href="#leads">Lead Recovery</a>
       <a href="#invoices">Invoices</a>
-      <a href="#activity">Activity</a>
+      <a href="#setup">System Setup</a>
     </nav>
-    <p class="sidebar-note">DEMO MODE · NOT CONNECTED</p>
+    <p class="sidebar-note">SETUP REQUIRED</p>
   </aside>
   <main>
     <header>
       <div>
         <p class="muted">WORKSPACE / OVERVIEW</p>
         <h1>Revenue Recovery</h1>
-        <p class="muted">Find opportunities. Follow up. Measure results.</p>
+        <p class="muted">A workspace for recovering missed leads and overdue invoices.</p>
       </div>
-      <span class="demo-badge">● Demo data</span>
+      <span class="status status-warning">● Integrations not configured</span>
     </header>
     <section class="metrics" id="overview" aria-label="Revenue overview">
       <article class="metric">
-        <p>30-day revenue target</p>
+        <p>30-day business ambition</p>
         <h2>$100,000,000</h2>
-        <small>Ambitious business goal · USD, not a forecast</small>
-      </article>
-      <article class="metric">
-        <p>Daily target equivalent</p>
-        <h2>$3,333,333.33</h2>
-        <small>30-day target divided by 30 · not actual revenue</small>
+        <small>USD goal only — not a forecast or guarantee</small>
       </article>
       <article class="metric">
         <p>Verified revenue</p>
         <h2>$0.00</h2>
-        <small>No billing or revenue source connected</small>
+        <small>No billing provider connected; no revenue verified</small>
+      </article>
+      <article class="metric">
+        <p>Automations running</p>
+        <h2>0</h2>
+        <small>Live business automations are not active</small>
       </article>
     </section>
     <section class="panel" id="leads">
       <div class="panel-heading">
         <div>
           <h2>Lead recovery queue</h2>
-          <p class="muted">Illustrative records only — no real customers</p>
+          <p class="muted">No customer records are connected.</p>
         </div>
-        <button id="addLead" type="button">+ Add demo lead</button>
+        <span class="status">Backend required</span>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Lead</th><th>Opportunity</th><th>Status</th><th>Action</th></tr></thead>
-          <tbody id="leadRows">
-            <tr>
-              <td>Sample customer A</td><td>$120.00</td>
-              <td><span class="status">Follow-up due</span></td>
-              <td><button class="secondary follow" type="button">Mark contacted</button></td>
-            </tr>
-            <tr>
-              <td>Sample customer B</td><td>$85.00</td>
-              <td><span class="status">New</span></td>
-              <td><button class="secondary follow" type="button">Mark contacted</button></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="empty-state">
+        <h3>No leads connected</h3>
+        <p class="muted">Connect a secure database and authorized lead source before adding real customer records.</p>
       </div>
     </section>
     <section class="panel" id="invoices">
-      <h2>Invoice recovery</h2>
-      <p class="muted">Reminder previews are local demos. No reminders are sent.</p>
-      <div class="invoice-row">
-        <div><strong>Sample invoice INV-001</strong><p class="muted">Illustrative amount: $50.00</p></div>
-        <button class="secondary" id="invoiceInfo" type="button" aria-expanded="false">View reminder preview</button>
+      <div class="panel-heading">
+        <div>
+          <h2>Invoice recovery</h2>
+          <p class="muted">No billing or accounting provider is connected.</p>
+        </div>
+        <span class="status">Not active</span>
       </div>
-      <p id="invoicePreview" class="notice" hidden>
-        Demo reminder: Hello, this is a sample payment reminder. Please verify invoice details before contacting a customer.
-      </p>
+      <div class="empty-state">
+        <h3>No invoices connected</h3>
+        <p class="muted">Live invoice reminders must wait until an authorized provider, customer consent, and safe send controls are configured.</p>
+      </div>
     </section>
-    <section class="panel" id="activity">
-      <h2>Activity</h2>
-      <p id="activityLog" class="muted" aria-live="polite">Demo workspace ready. No external actions have been taken.</p>
+    <section class="panel" id="setup">
+      <h2>Production setup checklist</h2>
+      <p class="muted">These are real implementation gates. Nothing is marked complete without verification.</p>
+      <ul class="setup-list">
+        <li><span class="setup-state complete">Ready</span><span>Source code stored in GitHub</span></li>
+        <li><span class="setup-state pending">Verify</span><span>GitHub Pages deployment and Actions run</span></li>
+        <li><span class="setup-state pending">Required</span><span>Backend and database with access controls</span></li>
+        <li><span class="setup-state pending">Required</span><span>Authentication and workspace/tenant isolation</span></li>
+        <li><span class="setup-state pending">Required</span><span>AI provider credentials stored as server-side secrets</span></li>
+        <li><span class="setup-state pending">Required</span><span>Authorized CRM, email/SMS and billing integrations</span></li>
+        <li><span class="setup-state pending">Required</span><span>Background jobs, retries, monitoring and failure alerts</span></li>
+        <li><span class="setup-state pending">Required</span><span>Security review, backups and production tests</span></li>
+      </ul>
     </section>
-    <footer>AI Revenue Recovery OS · Prototype · Demo data only · No backend or live integrations</footer>
+    <footer>AI Revenue Recovery OS · Setup in progress · No live customer data, messages, payments, or business automation connected</footer>
   </main>
-  <script src="app.js"></script>
 </body>
 </html>
