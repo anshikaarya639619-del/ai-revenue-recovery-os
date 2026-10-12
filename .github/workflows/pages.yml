@@ -26,7 +26,7 @@ jobs:
           test -f style.css
           test -f app.js
           grep -q 'name="viewport"' index.html
-          grep -q 'href="style.css"' index.html
+          grep -q 'href="style.css' index.html
           grep -q 'id="setup"' index.html
           node --check app.js
       - name: Configure GitHub Pages
