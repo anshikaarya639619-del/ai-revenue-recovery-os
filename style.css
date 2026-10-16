@@ -54,3 +54,53 @@ h1,h2,h3,.brand-name,.stat-card h3,.stage-core>span,.setup-badge span,.footer-br
 .setup-progress{height:5px;background:#ffffff15}
 .setup-progress span{background:linear-gradient(90deg,var(--lime),var(--cyan))}
 @media(max-width:620px){.welcome h1{font-size:clamp(54px,15vw,80px)}.brand-name{font-size:20px}.stage-core{width:120px;height:120px}.stage-core>span{font-size:48px}.stat-card h3{font-size:46px}}
+
+
+/* GLASS CINEMA REDESIGN v19 — static hero, iPhone glass, streaming-red accents */
+:root{--bg:#09090d;--panel:#141419;--panel2:#1b1b23;--line:#ffffff20;--text:#fafaff;--muted:#a8a8b5;--lime:#ffe34f;--red:#e50914;--cyan:#b9dfff;--violet:#b6a4ff;--r:24px}
+body{background:radial-gradient(ellipse at 8% 0%,#e5091416,transparent 32%),radial-gradient(ellipse at 94% 12%,#8c75ff16,transparent 30%),#09090d;color:#fafaff}
+body:before{background:linear-gradient(#ffffff05 1px,transparent 1px);background-size:100% 48px;opacity:.22}
+.topbar{background:#0b0b10b8;border-bottom-color:#ffffff14;backdrop-filter:blur(28px) saturate(160%)}
+.brand-symbol{background:linear-gradient(145deg,#fff,#c8c8d3);color:#111;box-shadow:0 5px 24px #ffffff20}
+.brand-name>span,.top-cta span,.quiet-link span,.section-title h2 span,.feature-symbol,.inline-link span,.footer-brand span{color:#ff3440}
+.overline{color:#ff6570}
+.live-pip{background:#ff3440;box-shadow:0 0 12px #ff3440}
+.welcome h1 span{color:#ff3440;text-shadow:0 0 36px #e509142b}
+.primary-btn{background:linear-gradient(135deg,#fff06a,#ffd52d);color:#15120a;border:1px solid #fff8b2;box-shadow:0 8px 28px #ffd52d1b,inset 0 1px #ffffffa8;border-radius:14px}
+.primary-btn:hover{box-shadow:0 12px 36px #ffd52d30}
+.top-cta,.secondary-btn{background:#ffffff09;border-color:#ffffff24;backdrop-filter:blur(18px)}
+.visual-stage{min-height:490px;border-radius:30px;border:1px solid #ffffff28;background:radial-gradient(ellipse at 50% 42%,#e5091418,transparent 40%),linear-gradient(145deg,#22222caa,#111117b8);box-shadow:0 28px 90px #0008,inset 0 1px #ffffff1c;backdrop-filter:blur(30px) saturate(150%)}
+.visual-stage:before{background:radial-gradient(ellipse at 50% 48%,#e5091420,transparent 35%),radial-gradient(ellipse at 75% 20%,#b6a4ff16,transparent 36%)}
+.visual-stage:after{inset:10px;border-color:#ffffff12;border-radius:22px}
+.stage-grid{opacity:.28}
+.stage-label b{color:#ffe34f}
+.stage-orbit{display:none!important;animation:none!important;filter:none!important}
+.stage-core{width:184px;height:184px;border-radius:42px;background:linear-gradient(145deg,#ffffff24,#ffffff06);border:1px solid #ffffff42;box-shadow:0 25px 70px #0008,inset 0 1px #ffffff48,0 0 55px #e5091412;backdrop-filter:blur(24px) saturate(160%);animation:none}
+.stage-core:before{inset:-13px;border-radius:50%;border:1px solid #ffffff30;box-shadow:0 0 60px #e5091418;animation:none}
+.stage-core:after{inset:-25px;border-radius:50%;border:1px solid #ffffff16;animation:none}
+.stage-core>span{font-size:70px;color:#fff;text-shadow:0 6px 28px #0006}
+.stage-core>span span{color:#ff3440}
+.stage-core small{color:#e3e3ed}
+.stage-note{border-radius:15px;border-color:#ffffff2b;background:linear-gradient(145deg,#ffffff1c,#ffffff08);box-shadow:0 16px 40px #0006,inset 0 1px #ffffff25;backdrop-filter:blur(24px) saturate(160%)}
+.stage-note i,.note-b i,.note-c i{background:#ff3440;box-shadow:0 0 12px #ff344055}
+.stage-note b{color:#e4e4ef}
+.stage-caption{color:#c2c2cf}
+.stat-card,.feature-card,.security-note,.lead-form,.lead-records,.setup-card,.bottom-note{background:linear-gradient(145deg,#ffffff0d,#ffffff04);border-color:#ffffff1c;box-shadow:0 20px 60px #0005,inset 0 1px #ffffff0b;backdrop-filter:blur(22px) saturate(135%)}
+.stat-target{background:linear-gradient(130deg,#e5091415,#ffffff05 78%);border-color:#ff34403b}
+.stat-icon{color:#ff6570;background:#e5091417}
+.tag-ambition{color:#ffe34f;background:#ffe34f10;border-color:#ffe34f32}
+.stat-card h3 span{color:#ffe34f}
+.bar-track i{background:linear-gradient(90deg,#e50914,#ff6971)}
+.feature-invoice .feature-symbol{color:#ffe34f;border-color:#ffe34f40}
+.empty-icon{background:#e5091417;color:#ff6570}
+.feature-invoice .empty-icon{background:#ffe34f12;color:#ffe34f}
+.lead-form input,.lead-form select,.os-edit-grid input,.os-edit-grid select,.os-edit-grid textarea{background:#ffffff08;border-color:#ffffff25;border-radius:12px;backdrop-filter:blur(16px)}
+.lead-form input:focus,.lead-form select:focus{border-color:#ff344088;box-shadow:0 0 0 3px #e5091416}
+.form-message{color:#ffe34f}
+.setup-progress span{background:linear-gradient(90deg,#e50914,#ff6971,#ffe34f)}
+.setup-step:first-child .step-number{background:#e509141b;color:#ff6570}
+.setup-step:first-child .step-state{color:#ff6570}
+.note-mark{border-color:#ff344066;color:#ff6570}
+.footer-brand span{color:#ff3440}
+@media(max-width:620px){.visual-stage{min-height:365px}.stage-core{width:142px;height:142px;border-radius:34px}.stage-core>span{font-size:56px}}
+@media(prefers-reduced-motion:reduce){.stage-core{animation:none!important}}
