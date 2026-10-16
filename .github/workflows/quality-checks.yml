@@ -26,7 +26,17 @@ jobs:
         with:
           node-version: 22
       - name: Check JavaScript syntax
-        run: node --check app.js
+        run: |
+          set -eu
+          node --check app.js
+          node --check features.js
+      - name: Prevent privileged Supabase keys in browser code
+        run: |
+          set -eu
+          if grep -Eiq 'service_role|sb_secret_[A-Za-z0-9_-]+' app.js features.js; then
+            echo 'Privileged Supabase key pattern found in browser code.' >&2
+            exit 1
+          fi
       - name: Check required site and policy files
         run: |
           set -eu
