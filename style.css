@@ -140,3 +140,21 @@ body{background:radial-gradient(ellipse at 8% 0%,#e5091417,transparent 34%),radi
 .stage-core:after{border-radius:50%;border-style:dashed;animation:softSpin 13s linear infinite}
 @media(max-width:620px){.stage-core{border-radius:50%}}
 @media(prefers-reduced-motion:reduce){.stage-orbit,.stage-core,.stage-core:before,.stage-core:after{animation:none!important}}
+
+
+/* PREMIUM ORBIT MOTION v22 — layered rotation, restrained glow, mobile-safe */
+.visual-stage{transform-style:preserve-3d}
+.stage-orbit{will-change:transform;backface-visibility:hidden}
+.stage-orbit.orbit-a{animation:orbitOne 5.2s linear infinite!important}
+.stage-orbit.orbit-b{animation:orbitTwo 8.8s linear infinite!important}
+.stage-orbit.orbit-c{animation:orbitThree 12s linear infinite!important}
+.stage-orbit.orbit-a:before{animation:orbitPulse 2.4s ease-in-out infinite}
+.stage-orbit.orbit-b:before{animation:orbitPulse 3s ease-in-out infinite reverse}
+.stage-orbit.orbit-c:before{animation:orbitPulse 3.6s ease-in-out infinite}
+.stage-core{will-change:transform,filter;box-shadow:0 0 0 8px #ffffff05,0 0 0 18px #ffffff03,0 0 48px #e5091420,inset 0 1px #ffffff40;animation:coreFloat 4s ease-in-out infinite!important}
+.stage-core:after{animation:softSpin 18s linear infinite!important}
+.stage-note{transition:transform .25s ease,border-color .25s ease}
+.stage-note:hover{transform:translateY(-3px);border-color:#ffffff55}
+@keyframes orbitPulse{0%,100%{filter:brightness(.9);scale:.88}50%{filter:brightness(1.35);scale:1.12}}
+@media(max-width:620px){.stage-orbit.orbit-a{width:80%!important}.stage-orbit.orbit-b{width:94%!important}.stage-orbit.orbit-c{width:66%!important}}
+@media(prefers-reduced-motion:reduce){.stage-orbit,.stage-orbit:before,.stage-core,.stage-core:after{animation:none!important}}
