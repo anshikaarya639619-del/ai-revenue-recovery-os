@@ -236,3 +236,48 @@ footer{padding:28px 0 38px;margin-top:30px}footer .footer-brand{letter-spacing:2
 @keyframes labOrbitC{from{transform:rotateX(62deg) rotateZ(80deg)}to{transform:rotateX(62deg) rotateZ(440deg)}}
 @keyframes reactorPulse{0%,100%{opacity:.35;transform:scale(.97)}50%{opacity:1;transform:scale(1.04)}}
 @media(prefers-reduced-motion:reduce){.stage-orbit,.stage-core:before,.stage-core:after{animation:none!important}}
+
+
+/* FULL STARK LAB OVERRIDE — unmistakably cinematic, not a normal dashboard */
+:root{color-scheme:dark!important;--paper:#03060c!important;--white:#080e19!important;--ink:#e9f7ff!important;--muted:#7d9bad!important;--line:#183449!important;--blue:#45e6ff!important;--blue-dark:#117da4!important;--orange:#bd8cff!important;--mint:#68fff0!important}
+html,body{background:#02050a!important;color:#e9f7ff!important}
+body{background:radial-gradient(ellipse at 75% 15%,#073044 0,transparent 32%),radial-gradient(ellipse at 12% 50%,#17103b 0,transparent 35%),#02050a!important}
+.page-shell{max-width:1600px!important}
+.topbar{border-bottom:1px solid #1a5064!important;background:#030811d9!important;backdrop-filter:blur(18px)}
+.brand-mark{background:linear-gradient(135deg,#54f5ff,#8c70ff)!important;color:#021018!important;box-shadow:0 0 28px #42dfff55!important}
+.hero{min-height:720px!important;gap:clamp(28px,5vw,90px)!important;align-items:center!important}
+.hero h1{color:#f3fbff!important;font-size:clamp(48px,7vw,100px)!important;line-height:.92!important;letter-spacing:-.075em!important;text-shadow:0 0 38px #48dfff24!important}
+.hero h1 span,.section-title h2 span{color:#53edff!important}
+.hero-copy,.hero p,.section-title>p{color:#91aebe!important}
+.overline,.stage-label,.stage-caption{color:#5deeff!important}
+.primary-btn{background:linear-gradient(100deg,#4cecff,#8b7bff)!important;color:#031019!important;box-shadow:0 0 32px #36d9ff38!important;border:0!important}
+.quiet-link{color:#b9eaff!important}
+.visual-stage{height:clamp(420px,48vw,650px)!important;min-height:420px!important;overflow:hidden!important;border:1px solid #1c6377!important;border-radius:50%!important;background:radial-gradient(circle at center,#0b3448 0,#06111f 33%,#030710 65%,#02050a 100%)!important;box-shadow:inset 0 0 70px #2adfff16,0 0 70px #1ab9ff12!important}
+.stage-grid{position:absolute!important;inset:-35%!important;background-image:linear-gradient(#38d9ff12 1px,transparent 1px),linear-gradient(90deg,#38d9ff12 1px,transparent 1px)!important;background-size:32px 32px!important;transform:perspective(500px) rotateX(62deg) scale(1.4)!important;mask-image:radial-gradient(ellipse,black 10%,transparent 70%)!important}
+.stage-orbit{position:absolute!important;left:50%!important;top:50%!important;width:78%!important;height:34%!important;margin:-17% 0 0 -39%!important;border:1px solid #53eaffaa!important;border-radius:50%!important;box-shadow:0 0 18px #29dfff21,inset 0 0 18px #29dfff15!important;transform-style:preserve-3d!important;overflow:visible!important}
+.orbit-a{animation:labOrbitA 7s linear infinite!important}
+.orbit-b{width:94%!important;height:46%!important;margin:-23% 0 0 -47%!important;border-color:#a78bfa!important;animation:labOrbitB 10s linear infinite!important}
+.orbit-c{width:61%!important;height:61%!important;margin:-30.5% 0 0 -30.5%!important;border-color:#53eaff55!important;animation:labOrbitC 13s linear infinite!important}
+.stage-orbit:before{content:""!important;position:absolute!important;left:50%!important;top:-9px!important;width:18px!important;height:18px!important;border-radius:50%!important;background:#eaffff!important;border:3px solid #4beaff!important;box-shadow:0 0 10px #fff,0 0 28px #4beaff,0 0 55px #4beaffaa!important}
+.stage-orbit:after{content:""!important;position:absolute!important;left:50%!important;bottom:-6px!important;width:12px!important;height:12px!important;border-radius:50%!important;background:#c6a6ff!important;box-shadow:0 0 15px #b39aff,0 0 38px #a78bfa!important}
+.stage-core{z-index:5!important;width:150px!important;height:150px!important;border:1px solid #55efff!important;border-radius:50%!important;background:radial-gradient(circle,#123e51,#06111d 70%)!important;box-shadow:0 0 24px #39dfff66,inset 0 0 25px #39dfff24!important;color:#efffff!important}
+.stage-core:before{inset:-18px!important;border:1px solid #4ceaffaa!important;border-radius:50%!important;box-shadow:0 0 30px #43eaff35!important;animation:reactorPulse 2s ease-in-out infinite!important}
+.stage-core:after{inset:-34px!important;border:1px dashed #ac8cff!important;border-radius:50%!important;animation:spinHUD 12s linear infinite!important}
+.stage-core small{color:#73edff!important}
+.stage-label,.stage-note,.stage-caption{z-index:7!important;text-shadow:0 0 12px #32dfff55!important}
+.stage-note{background:#06121ee8!important;border:1px solid #24637a!important;box-shadow:0 0 25px #0de3ff14!important;color:#dffaff!important;backdrop-filter:blur(12px)!important}
+.stage-note b{color:#62f0ff!important}
+.section-title{border-top:1px solid #173c50!important}
+.section-title h2{color:#eefaff!important}
+.stat-card,.setup-card,.recovery-card,.panel,.feature-card{background:linear-gradient(145deg,#0a1422,#050a12)!important;border:1px solid #1b3c50!important;color:#eafaff!important;box-shadow:0 12px 40px #0008!important}
+.stat-card h3,.stat-card h2,.setup-card h3,.recovery-card h3{color:#f2fbff!important}
+.stat-label,.stat-bottom,.setup-card p,.recovery-card p{color:#91aebe!important}
+.tag,.status-pill{background:#102432!important;color:#7df3ff!important;border:1px solid #24566b!important}
+.bar-track{background:#132b39!important}
+.bar-track i{background:linear-gradient(90deg,#43eaff,#a78bfa)!important;box-shadow:0 0 12px #4beaff!important}
+footer{border-top:1px solid #18384b!important;color:#7e9baa!important}
+@keyframes labOrbitA{0%{transform:translateZ(0) rotateX(62deg) rotateZ(0deg)}100%{transform:translateZ(0) rotateX(62deg) rotateZ(360deg)}}
+@keyframes labOrbitB{0%{transform:translateZ(0) rotateX(68deg) rotateZ(0deg)}100%{transform:translateZ(0) rotateX(68deg) rotateZ(-360deg)}}
+@keyframes labOrbitC{0%{transform:translateZ(0) rotateX(8deg) rotateZ(0deg)}100%{transform:translateZ(0) rotateX(8deg) rotateZ(360deg)}}
+@keyframes reactorPulse{0%,100%{opacity:.5;transform:scale(.94)}50%{opacity:1;transform:scale(1.07)}}
+@media(max-width:800px){.hero{min-height:0!important}.visual-stage{height:390px!important;min-height:390px!important;margin-top:30px!important}.stage-core{width:112px!important;height:112px!important}.stage-note{transform:scale(.8)}}
