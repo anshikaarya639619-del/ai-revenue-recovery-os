@@ -103,7 +103,8 @@
     const status = statusMap[String(data.get("status") || "New")] || "New";
     const next = String(data.get("next") || "");
     if (!name) { setCloudMessage(message, "Enter a name before saving."); return; }
-    const payload = {name, contact, source:sourceOptions.includes(String(data.get("source"))) ? String(data.get("source")) : "Other", status, follow_up_date:/^\d{4}-\d{2}-\d{2}$/.test(next) ? next : null};
+    const notes = String(data.get("notes") || "").trim().slice(0,2000);
+    const payload = {name, contact, notes, source:sourceOptions.includes(String(data.get("source"))) ? String(data.get("source")) : "Other", status, follow_up_date:/^\d{4}-\d{2}-\d{2}$/.test(next) ? next : null};
     const { error } = await supabase.from("leads").insert(payload);
     if (error) { setCloudMessage(message, "Cloud save failed: " + error.message); return; }
     form.reset();
@@ -122,7 +123,7 @@
 
   exportButton.addEventListener("click", () => {
     if (!currentUser || !leads.length) { setCloudMessage(message, "Sign in and add cloud leads before exporting."); return; }
-    const columns = ["name","contact","source","status","follow_up_date","created_at"];
+    const columns = ["name","contact","source","status","follow_up_date","notes","created_at"];
     const csvCell = value => '"' + String(value ?? "").replace(/"/g, '""') + '"';
     const csv = [columns.join(","), ...leads.map(lead => columns.map(key => csvCell(lead[key])).join(","))].join("\r\n");
     const blob = new Blob(["\uFEFF" + csv], {type:"text/csv;charset=utf-8;"});
