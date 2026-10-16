@@ -128,3 +128,15 @@ body{background:radial-gradient(ellipse at 8% 0%,#e5091417,transparent 34%),radi
 @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
  .topbar,.visual-stage,.stage-core,.stage-note,.stat-card,.feature-card,.security-note,.lead-form,.lead-records,.setup-card,.bottom-note{background-color:#15151c}
 }
+
+
+/* FIX v21 — preserve all original hero elements; apply transparency only */
+.stage-orbit{display:block!important;animation:orbitOne 6s linear infinite!important;filter:drop-shadow(0 0 5px #ffffff24)!important}
+.stage-orbit.orbit-a{animation:orbitOne 5.2s linear infinite!important}
+.stage-orbit.orbit-b{animation:orbitTwo 7.4s linear infinite!important}
+.stage-orbit.orbit-c{animation:orbitThree 9s linear infinite!important}
+.stage-core{border-radius:50%;animation:coreFloat 3.5s ease-in-out infinite}
+.stage-core:before{border-radius:50%;animation:reactorGlow 2s ease-in-out infinite}
+.stage-core:after{border-radius:50%;border-style:dashed;animation:softSpin 13s linear infinite}
+@media(max-width:620px){.stage-core{border-radius:50%}}
+@media(prefers-reduced-motion:reduce){.stage-orbit,.stage-core,.stage-core:before,.stage-core:after{animation:none!important}}
