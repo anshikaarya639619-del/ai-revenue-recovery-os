@@ -174,3 +174,41 @@ body{background:radial-gradient(ellipse at 8% 0%,#e5091417,transparent 34%),radi
 button:disabled{opacity:.58;cursor:not-allowed}
 @media(max-width:620px){.security-note:after{position:static;display:inline-block;margin:0 0 18px}.security-note ul{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.security-note,.cloud-auth{scroll-behavior:auto}}
+
+/* SIGNATURE PREMIUM EXPERIENCE v24 — cinematic depth, editorial hierarchy, glass */
+:root{--glass-edge:rgba(255,255,255,.22);--glass-fill:rgba(255,255,255,.055);--signal:#ff4057;--ice:#b9e9ff}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(ellipse at 12% 3%,rgba(229,9,20,.17),transparent 30%),radial-gradient(ellipse at 87% 9%,rgba(130,105,255,.16),transparent 28%),radial-gradient(ellipse at 52% 65%,rgba(70,125,255,.055),transparent 40%),#07080d}
+body:before{opacity:.18;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:100% 54px,54px 100%}
+.topbar{background:rgba(8,9,14,.58);border-bottom-color:rgba(255,255,255,.13);backdrop-filter:blur(34px) saturate(180%);-webkit-backdrop-filter:blur(34px) saturate(180%)}
+.brand-symbol{background:linear-gradient(145deg,#fff,#d3d8e8);box-shadow:0 0 0 1px #ffffff40,0 8px 32px #ffffff1b}
+.top-cta,.secondary-btn,.quiet-link{transition:transform .22s,border-color .22s,background .22s}
+.top-cta:hover,.secondary-btn:hover{transform:translateY(-2px);border-color:#ffffff55;background:#ffffff12}
+.welcome{position:relative}
+.welcome-copy{position:relative;z-index:2}
+.welcome h1{text-wrap:balance;text-shadow:0 10px 55px #0008}
+.welcome h1 span{background:linear-gradient(100deg,#fff 0%,#ff7a86 45%,#ff3440 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.welcome-text{max-width:490px;color:#c0c4d0}
+.trust-row span{padding:7px 10px;border:1px solid #ffffff14;border-radius:99px;background:#ffffff04}
+.visual-stage{border:1px solid rgba(255,255,255,.28);background:linear-gradient(135deg,rgba(255,255,255,.105),rgba(255,255,255,.018) 52%,rgba(110,93,190,.075)),radial-gradient(ellipse at 50% 48%,rgba(229,9,20,.11),transparent 45%);box-shadow:0 38px 110px #0009,inset 0 1px rgba(255,255,255,.24),inset 0 0 80px #b6a4ff08;backdrop-filter:blur(36px) saturate(170%);-webkit-backdrop-filter:blur(36px) saturate(170%)}
+.visual-stage:after{inset:9px;border:1px solid rgba(255,255,255,.14);border-radius:23px}
+.stage-grid{opacity:.22}
+.stage-core{background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.28),rgba(255,255,255,.07) 60%,rgba(15,16,25,.38));border:1px solid rgba(255,255,255,.55);box-shadow:0 0 0 8px #ffffff07,0 0 0 20px #ffffff04,0 25px 80px #0009,0 0 65px #ff344019,inset 0 1px rgba(255,255,255,.48);backdrop-filter:blur(32px) saturate(185%);-webkit-backdrop-filter:blur(32px) saturate(185%)}
+.stage-core:before{border-color:rgba(255,255,255,.38);box-shadow:0 0 40px #ff344020}
+.stage-core:after{border-color:rgba(185,233,255,.27)}
+.stage-note{background:linear-gradient(135deg,rgba(255,255,255,.21),rgba(255,255,255,.055));border-color:rgba(255,255,255,.34);box-shadow:0 18px 45px #0006,inset 0 1px rgba(255,255,255,.28);backdrop-filter:blur(32px) saturate(185%);-webkit-backdrop-filter:blur(32px) saturate(185%)}
+.stat-card,.feature-card,.security-note,.lead-form,.lead-records,.setup-card,.bottom-note{background:linear-gradient(140deg,rgba(255,255,255,.09),rgba(255,255,255,.025) 65%,rgba(150,130,255,.025));border-color:rgba(255,255,255,.2);box-shadow:0 24px 65px #0005,inset 0 1px rgba(255,255,255,.13);backdrop-filter:blur(28px) saturate(165%);-webkit-backdrop-filter:blur(28px) saturate(165%);transition:transform .25s,border-color .25s,box-shadow .25s}
+.stat-card:hover,.feature-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.38);box-shadow:0 28px 70px #0007,inset 0 1px rgba(255,255,255,.18)}
+.stat-target{background:linear-gradient(135deg,rgba(229,9,20,.15),rgba(255,255,255,.035));border-color:rgba(255,90,110,.35)}
+.section-title{border-top-color:rgba(255,255,255,.15)}
+.section-title>p,.form-help,.records-heading p{color:#b1b6c4}
+.empty-state,.lead-record,.records-empty{background:rgba(255,255,255,.045);border-color:rgba(255,255,255,.18)}
+.lead-form input,.lead-form select,.os-edit-grid input,.os-edit-grid select,.os-edit-grid textarea{background:rgba(5,6,12,.36);border-color:rgba(255,255,255,.27);color:#fff}
+.lead-form input::placeholder{color:#888f9e}
+.setup-step{border-bottom-color:rgba(255,255,255,.14)}
+.setup-step p{color:#b0b5c1}
+.bottom-note{border-color:rgba(255,255,255,.19)}
+footer{border-top-color:rgba(255,255,255,.15)}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #b9e9ff!important;outline-offset:3px!important}
+@media(max-width:620px){.welcome h1{font-size:clamp(48px,13.8vw,76px)}.visual-stage{backdrop-filter:blur(24px) saturate(155%)}.stage-note{backdrop-filter:blur(22px) saturate(160%)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stat-card,.feature-card,.top-cta,.secondary-btn{transition:none}}
