@@ -104,3 +104,27 @@ body:before{background:linear-gradient(#ffffff05 1px,transparent 1px);background
 .footer-brand span{color:#ff3440}
 @media(max-width:620px){.visual-stage{min-height:365px}.stage-core{width:142px;height:142px;border-radius:34px}.stage-core>span{font-size:56px}}
 @media(prefers-reduced-motion:reduce){.stage-core{animation:none!important}}
+
+
+/* TRANSPARENT GLASS PASS v20 — keep cinema palette, reveal layered glass */
+:root{--glass-surface:rgba(255,255,255,.045);--glass-surface-strong:rgba(255,255,255,.075);--glass-stroke:rgba(255,255,255,.17)}
+body{background:radial-gradient(ellipse at 8% 0%,#e5091417,transparent 34%),radial-gradient(ellipse at 92% 18%,#8c75ff18,transparent 32%),linear-gradient(135deg,#08090d 0%,#0c0b12 52%,#09090d 100%)}
+.page-shell{isolation:isolate}
+.topbar{background:rgba(10,10,15,.42);border-bottom:1px solid rgba(255,255,255,.12);backdrop-filter:blur(32px) saturate(180%);-webkit-backdrop-filter:blur(32px) saturate(180%)}
+.visual-stage{background:linear-gradient(135deg,rgba(255,255,255,.095),rgba(255,255,255,.018) 58%,rgba(229,9,20,.035));border:1px solid rgba(255,255,255,.25);box-shadow:0 30px 90px #0006,inset 0 1px rgba(255,255,255,.24);backdrop-filter:blur(36px) saturate(175%);-webkit-backdrop-filter:blur(36px) saturate(175%)}
+.visual-stage:before{background:radial-gradient(ellipse at 50% 45%,#e5091412,transparent 42%),radial-gradient(ellipse at 82% 15%,#b6a4ff14,transparent 38%)}
+.visual-stage:after{border-color:rgba(255,255,255,.13)}
+.stage-grid{opacity:.16}
+.stage-core{background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.055));border:1px solid rgba(255,255,255,.42);box-shadow:0 25px 70px #0005,inset 0 1px rgba(255,255,255,.42),inset 0 -1px rgba(255,255,255,.06);backdrop-filter:blur(30px) saturate(190%);-webkit-backdrop-filter:blur(30px) saturate(190%)}
+.stage-core:before{border-color:rgba(255,255,255,.24);box-shadow:0 0 55px #e5091410}
+.stage-core:after{border-color:rgba(255,255,255,.20)}
+.stage-note{background:linear-gradient(135deg,rgba(255,255,255,.19),rgba(255,255,255,.055));border-color:rgba(255,255,255,.28);box-shadow:0 16px 40px #0004,inset 0 1px rgba(255,255,255,.25);backdrop-filter:blur(30px) saturate(190%);-webkit-backdrop-filter:blur(30px) saturate(190%)}
+.stat-card,.feature-card,.security-note,.lead-form,.lead-records,.setup-card,.bottom-note{background:linear-gradient(135deg,rgba(255,255,255,.085),rgba(255,255,255,.025));border-color:rgba(255,255,255,.18);box-shadow:0 20px 60px #0004,inset 0 1px rgba(255,255,255,.12);backdrop-filter:blur(28px) saturate(165%);-webkit-backdrop-filter:blur(28px) saturate(165%)}
+.stat-target{background:linear-gradient(135deg,rgba(229,9,20,.13),rgba(255,255,255,.035));border-color:rgba(255,90,100,.34)}
+.empty-state,.lead-record,.records-empty{background:rgba(255,255,255,.035);border-color:rgba(255,255,255,.15)}
+.lead-form input,.lead-form select,.os-edit-grid input,.os-edit-grid select,.os-edit-grid textarea{background:rgba(5,6,10,.27);border-color:rgba(255,255,255,.24);box-shadow:inset 0 1px rgba(255,255,255,.035);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.top-cta,.secondary-btn{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.24)}
+.bottom-note{background:rgba(255,255,255,.035)}
+@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
+ .topbar,.visual-stage,.stage-core,.stage-note,.stat-card,.feature-card,.security-note,.lead-form,.lead-records,.setup-card,.bottom-note{background-color:#15151c}
+}
