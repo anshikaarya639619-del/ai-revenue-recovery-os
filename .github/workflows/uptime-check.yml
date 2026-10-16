@@ -1,0 +1,41 @@
+name: Free uptime checks
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uptime-check
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check public site and Supabase endpoint
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check GitHub Pages website
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://anshikaarya639619-del.github.io/ai-revenue-recovery-os/"
+          CODE="$(curl --silent --show-error --location --output /tmp/site.html --write-out '%{http_code}' --max-time 25 "$URL")"
+          echo "GitHub Pages HTTP status: $CODE"
+          test "$CODE" = "200"
+          grep -qi "Recovery OS" /tmp/site.html
+          echo "Website returned HTTP 200 and expected page content."
+
+      - name: Check Supabase Auth health endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://edpawydxeqbopjotxwiw.supabase.co/auth/v1/health"
+          CODE="$(curl --silent --show-error --location --output /tmp/supabase-health.txt --write-out '%{http_code}' --max-time 25 "$URL")"
+          echo "Supabase Auth health HTTP status: $CODE"
+          test "$CODE" -ge 200
+          test "$CODE" -lt 500
+          echo "Supabase endpoint responded. This checks reachability only, not database policies or lead operations."
