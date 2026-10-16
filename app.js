@@ -124,7 +124,7 @@
   exportButton.addEventListener("click", () => {
     if (!currentUser || !leads.length) { setCloudMessage(message, "Sign in and add cloud leads before exporting."); return; }
     const columns = ["name","contact","source","status","follow_up_date","notes","created_at"];
-    const csvCell = value => '"' + String(value ?? "").replace(/"/g, '""') + '"';
+    const csvCell = value => { const text = String(value ?? ""); const safe = /^[\s\u0000-\u001F]*[=+@-]/.test(text) ? "'" + text : text; return '"' + safe.replace(/"/g, '""') + '"' };
     const csv = [columns.join(","), ...leads.map(lead => columns.map(key => csvCell(lead[key])).join(","))].join("\r\n");
     const blob = new Blob(["\uFEFF" + csv], {type:"text/csv;charset=utf-8;"});
     const url = URL.createObjectURL(blob);
